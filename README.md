@@ -41,11 +41,9 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 - [ ] Implement anything else that you can get done to improve the app functionality!
 
 ### Walkthrough Video
-
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
+Preview of Walkthrough (click link to see full video):
 '<a href="https://www.loom.com/share/72f432c3fd6046188e79218e19aff583">
-    <p>Watch Loom Walkthrough Screen Recording</p>
+    <p>Watch Loom Walkthrough Screen Recording Here</p>
     <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/72f432c3fd6046188e79218e19aff583-with-play.gif">
   </a>'
 
@@ -61,12 +59,12 @@ If I had more time, I would try to deploy the project using Github Pages. I woul
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I was able to implement all the features I wanted to to, including the core goals and a few of the stretch goals. Some features took longer to implement than expected, such as the search bar and popup modal boxes. Some of my peers were able to deploy to GitHub Pages, which I thought was a great addition and something I may implement in future projects.
 
 ### Open-source libraries used
 
 - Add any links to open-source libraries used in your project.
 
 ### Shout out
+Phineas and Yilika were both very helpful!
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
