@@ -44,7 +44,10 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
-![caption](https://www.loom.com/share/72f432c3fd6046188e79218e19aff583)
+'<a href="https://www.loom.com/share/72f432c3fd6046188e79218e19aff583">
+    <p>Loom Message - 17 June 2022 - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/72f432c3fd6046188e79218e19aff583-with-play.gif">
+  </a>'
 
 ### Reflection
 
