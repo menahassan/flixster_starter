@@ -50,6 +50,7 @@ p{
     border-radius: 5px;
     max-width: 120px;
     min-height: 30px;
+    margin-top: 10px;
 }
 
 #movies-grid{
@@ -71,6 +72,11 @@ p{
     max-width: 250px;
     cursor: pointer;
     border-radius: 10px;
+    transition: transform .2s;
+}
+
+.movie-poster:hover {
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 #load-more-movies-btn{
@@ -144,12 +150,20 @@ p{
 }
 
 .modal-poster{
-    max-height: 200px;
+    max-height: 220px;
     text-align: center;
-    padding-left: 15px;
+    border-radius: 10px;
 }
 
-.modal-poster-container{
+.ytplayer-container{
+    text-align: center;
+}
+
+#ytplayer{
+    height: 250px;
+    width: 380px;
+    resize: both;
+    overflow: auto;
     text-align: center;
 }
 
@@ -186,5 +200,9 @@ p{
         text-align: center;
         font-size: 16px;
         margin-left: 0;
+    }
+    #ytplayer{
+        height: 250px;
+        width: 300px;
     }
 }

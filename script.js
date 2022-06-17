@@ -3,11 +3,13 @@ const imageBaseUrl = 'https://image.tmdb.org/t/p'
 let PAGE = 1
 let currentMovie = "" 
 var movieCardsEl = ""
+BASE_URL = "https://api.themoviedb.org/3"
 
-MOVIES_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=`
-SEARCH_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`
-GET_MOVIE_BY_ID_URL = `https://api.themoviedb.org/3/movie/`
+
+MOVIES_URL = BASE_URL + `/movie/popular?api_key=${API_KEY}&language=en-US&page=`
+SEARCH_URL = BASE_URL + `/search/movie?api_key=${API_KEY}&query=`
 var CURRENT_URL = MOVIES_URL
+VIDEO_URL = `/videos?api_key=${API_KEY}&language=en-US`
 
 const moviesGridEl = document.querySelector("#movies-grid")
 const movieButtonEl = document.querySelector("#load-more-movies-btn")
@@ -16,44 +18,64 @@ const modal = document.querySelector(".modal");
 const searchInputEl = document.getElementById("search-input")
 const closeSearchEl = document.getElementById("close-search-btn")
 
-function toggleModal() {
-    console.log('hello')
-    //modal.classList.toggle("show-modal");
-    /*if(target != "none"){
-        var title = target.title
-        var overview= target.alt
-        var src= target.src
-        modal.innerHTML = `
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h1 class = "modal-title">${title}</h1>
-            <div class = "modal-poster-container">
-                <img class="modal-poster" src=${src} alt="${overview}" title="${title}"/>
-            </div>
-            <p class = "modal-overview">${overview}</p>
+/* 
+"/movie/{movie_id}/videos"
+iframes:
+URL format: https://www.youtube.com/embed/VIDEO_ID
+
+<iframe id="ytplayer" type="text/html" width="640" height="360"
+  src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+  frameborder="0"></iframe>
+*/
+
+async function getVideo(id){
+    console.log("running")
+    const response = await fetch(BASE_URL + `/movie/${id}${VIDEO_URL}`)
+    const result = await response.json()
+    console.log(result.results[0])
+    return result.results[0].key
+}
+
+function closeModal(){
+    modal.classList.toggle("show-modal");
+}
+
+function toggleModal(title, overview, video) {
+    overview = overview.replace("&apos","'")
+    modal.classList.toggle("show-modal");
+    modal.innerHTML = `
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h1 class = "modal-title">${title}</h1>
+        <div class = "ytplayer-container">
+            <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/${video}" frameborder="0">
+            </iframe>
         </div>
-        `
-        const closeButton = document.querySelector(".close-button");
-        closeButton.addEventListener("click", function(){toggleModal("none")});
-    }*/
+        <p class = "modal-overview">${overview}</p>
+    </div>
+    `
+    const closeButton = document.querySelector(".close-button");
+    closeButton.addEventListener("click", function(){closeModal()});
 }
 
 //create a movie card
-function listMovie(movie){
-    var id = movie.id
+async function listMovie(movie){
+    var video = await getVideo(movie.id)
+    console.log(video)
+    
+    //replace apostrophe so it doesn't throw an error
+    var overview = movie.overview.replace("'","&apos")
     moviesGridEl.innerHTML = moviesGridEl.innerHTML + `
     <div class="movie-card">
         <p class="movie-title">${movie.title}</p>
-        <img class="movie-poster" src="${imageBaseUrl}/w342${movie.poster_path}" alt="${movie.overview}" title="${movie.title}"/>
+        <a href="javascript:toggleModal('${movie.title}','${overview}', '${video}')">
+            <img class="movie-poster" src="${imageBaseUrl}/w342${movie.poster_path}" alt="${movie.title}" title="${movie.title}"/>
+        </a>
         <p class="movie-votes">Rating: ${movie.vote_average}</p>
     </div>
     `
-
-    /*var posters = document.getElementsByClassName("movie-poster")
-    console.log(posters[posters.length - 1])
-    posters[posters.length - 1].addEventListener('click', toggleModal);
-    console.log('done')*/
 }
+
 //create a movie card for each movie
 async function getResults(PAGE_URL){
     const response = await fetch(PAGE_URL)
@@ -71,7 +93,6 @@ movieButtonEl.addEventListener('click', () => {
 })
 
 //search
-
 document.getElementById("search-form").addEventListener('submit', (event) => {
     event.preventDefault()
     PAGE = 1
@@ -93,6 +114,7 @@ closeSearchEl.addEventListener('click', (event) => {
     PAGE = 1
     moviesGridEl.innerHTML = ""
     closeSearchEl.style.visibility = "hidden"
+    searchInputEl.value = ""
     getResults(MOVIES_URL + PAGE)
 })
 
@@ -100,19 +122,3 @@ closeSearchEl.addEventListener('click', (event) => {
 window.onload = function(){
     getResults(MOVIES_URL + PAGE)
 }
-
-
-/*
-window.onload = function(){
-    getResults(MOVIES_URL + PAGE)
-
-    for(var i = 0; i < movieCardsEl.length; i++){
-        movieCardsEl[i].addEventListener('click', function(e) {
-            console.log('click')
-            e = e || window.event;
-            var target = e.target;
-            toggleModal(target)   
-        }, false)
-    }
-}
-*/
