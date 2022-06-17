@@ -24,9 +24,14 @@ p{
     top: 0;
 }
 
+.site-title{
+    text-align: center;
+    padding-left: 0px;
+}
+
 .form{
+    text-align: center;
     padding-bottom: 15px;
-    padding-left: 15px;
 }
 
 #search-input{
@@ -40,6 +45,7 @@ p{
 }
 
 #close-search-btn{
+    text-align: center;
     visibility: hidden;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     cursor: pointer;
@@ -79,6 +85,10 @@ p{
     transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
+.movie-btn-container{
+    text-align: center;
+}
+
 #load-more-movies-btn{
     background-color: #a8325e;
     border: none;
@@ -87,7 +97,6 @@ p{
     text-align: center;
     font-size: 16px;
     margin-bottom: 20px;
-    margin-left: 35px;
     cursor: pointer;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 17px;
