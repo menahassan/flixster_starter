@@ -29,7 +29,7 @@ p{
     padding-left: 15px;
 }
 
-.search-input{
+#search-input{
     margin-top: 30px;
     max-width: 200px;
     min-height: 25px;
@@ -39,15 +39,14 @@ p{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-#search-button{
+#close-search-btn{
+    visibility: hidden;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     cursor: pointer;
     background-color: #f2c4d5;
     color: black;
     border-style: solid;
     border-width: 1px;
-    margin-top: 32px;
-    margin-left: 10px;
     border-radius: 5px;
     max-width: 120px;
     min-height: 30px;

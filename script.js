@@ -13,8 +13,8 @@ const moviesGridEl = document.querySelector("#movies-grid")
 const movieButtonEl = document.querySelector("#load-more-movies-btn")
 const modal = document.querySelector(".modal");
 
-const  searchButtonEl = document.getElementById("search-button")
-const  searchInputEl = document.querySelector(".search-input")
+const searchInputEl = document.getElementById("search-input")
+const closeSearchEl = document.getElementById("close-search-btn")
 
 function toggleModal() {
     console.log('hello')
@@ -49,10 +49,10 @@ function listMovie(movie){
     </div>
     `
 
-    var posters = document.getElementsByClassName("movie-poster")
+    /*var posters = document.getElementsByClassName("movie-poster")
     console.log(posters[posters.length - 1])
     posters[posters.length - 1].addEventListener('click', toggleModal);
-    console.log('done')
+    console.log('done')*/
 }
 //create a movie card for each movie
 async function getResults(PAGE_URL){
@@ -71,6 +71,7 @@ movieButtonEl.addEventListener('click', () => {
 })
 
 //search
+
 document.getElementById("search-form").addEventListener('submit', (event) => {
     event.preventDefault()
     PAGE = 1
@@ -83,8 +84,18 @@ document.getElementById("search-form").addEventListener('submit', (event) => {
         var SEARCH = SEARCH_URL + `${QUERY}&page=${PAGE}`
         CURRENT_URL = SEARCH
         getResults(SEARCH)
+        closeSearchEl.style.visibility = "visible"
     }
 })
+
+closeSearchEl.addEventListener('click', (event) => {
+    event.preventDefault()
+    PAGE = 1
+    moviesGridEl.innerHTML = ""
+    closeSearchEl.style.visibility = "hidden"
+    getResults(MOVIES_URL + PAGE)
+})
+
 
 window.onload = function(){
     getResults(MOVIES_URL + PAGE)
