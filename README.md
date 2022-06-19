@@ -1,5 +1,3 @@
-📝 `NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
-
 ## Week 1 Assignment: Flixster
 
 Submitted by: Mena Hassan
@@ -62,8 +60,6 @@ If I had more time, I would try to deploy the project using Github Pages. I woul
 I was able to implement all the features I wanted to to, including the core goals and a few of the stretch goals. Some features took longer to implement than expected, such as the search bar and popup modal boxes. Some of my peers were able to deploy to GitHub Pages, which I thought was a great addition and something I may implement in future projects.
 
 ### Open-source libraries used
-
-- Add any links to open-source libraries used in your project.
 
 ### Shout out
 Phineas and Yilika were both very helpful!
